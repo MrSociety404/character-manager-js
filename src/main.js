@@ -5,3 +5,4 @@ import './styles/styles.scss'
 import 'boxicons'
 
 createApp(App).use(router).mount('#app')
+
