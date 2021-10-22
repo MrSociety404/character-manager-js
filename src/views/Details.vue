@@ -1,10 +1,12 @@
 <template>
-  <div></div>
+  <main class="details">
+
+  </main>
 </template>
 
 <script setup>
 </script>
 
-<style>
+<style lang="scss">
 
 </style>
