@@ -1,5 +1,6 @@
 <template>
   <main class="home">
+    <Titlebar content="CHARACTERS" />
     <section class="home__grid">
       <Card
         v-for="character in characters"
@@ -12,7 +13,8 @@
 
 <script setup>
 import { onMounted, ref } from "@vue/runtime-core";
-import Card from "../components/Card.vue";
+import Card from "@/components/Card.vue";
+import Titlebar from '@/components/Titlebar.vue'
 
 let characters = ref([]);
 const loadCharacter = async () => {
