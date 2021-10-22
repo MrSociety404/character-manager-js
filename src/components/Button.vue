@@ -8,19 +8,17 @@
 <script setup>
 import { defineProps  } from "vue";
 
-const props = defineProps({
+defineProps({
   content: String,
   icon: Boolean
 })
-
-props
 </script>
 
 <style lang="scss">
 .btn {
   background-color: $primary ;
   color: $white;
-  padding: .6em 2em;
+  padding: .3em 2em;
   border-radius: $border-radius-big;
   cursor: pointer;
   display: flex;
