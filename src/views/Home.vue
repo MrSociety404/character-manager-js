@@ -1,7 +1,9 @@
 <template>
   <main class="home">
-    <Titlebar content="CHARACTERS" />
-    <Search />
+    <div class="home__title">
+      <Titlebar content="CHARACTERS" />
+      <Search />
+    </div>
     <section class="home__grid">
       <Loading v-if="characters.length === 0" />
       <Card
@@ -53,6 +55,12 @@ const filteredCharacters = computed(() => {
   max-width: $xxl;
   margin: 0 auto;
   padding: 1em;
+  &__title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 2em;
+  }
   &__grid {
     display: flex;
     justify-content: space-evenly;

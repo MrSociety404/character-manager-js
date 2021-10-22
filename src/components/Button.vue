@@ -28,5 +28,11 @@ defineProps({
     fill: $white;
     margin-right: .2em;
   }
+  &.light {
+    background-color: transparent;
+    border: 1px solid $black;
+    color: $black;
+    fill: $black;
+  }
 }
 </style>
