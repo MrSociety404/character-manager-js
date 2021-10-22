@@ -1,12 +1,5 @@
 <template>
   <header class="header">
-<<<<<<< HEAD
-    <div class="header__box-title">
-      <img src="@/assets/logo.png" alt="logo">
-      <h1 class="header__title">Header</h1>
-    </div>
-    <a-input-search placeholder="input search text" @search="onSearch" />
-=======
     <div class="header__box">
       <router-link to="/" class="header__box-title">
         <img class="header__logo" src="@/assets/logo.svg" alt="logo" />
@@ -14,7 +7,6 @@
       </router-link>
       <Button icon="plus" content="ADD NEW" />
     </div>
->>>>>>> a53cce355d4e6160634107b046581ca06c9a0a3d
   </header>
 </template>
 
