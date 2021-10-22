@@ -5,13 +5,17 @@
         <img class="header__logo" src="@/assets/logo.svg" alt="logo" />
         <h1 class="header__title">CHARACTER<span>CONTENT MANAGER</span></h1>
       </router-link>
-      <Button icon="plus" content="ADD NEW" />
+      <div class="header__nav">
+        <Search />
+        <Button icon="plus" content="ADD NEW" />
+      </div>
     </div>
   </header>
 </template>
 
 <script setup>
 import Button from "@/components/Button.vue";
+import Search from "@/components/Search.vue";
 </script>
 
 <style lang="scss">
@@ -31,7 +35,13 @@ import Button from "@/components/Button.vue";
       display: flex;
       align-items: center;
       cursor: pointer;
-    }
+    }    
+  }
+  &__nav{
+    width: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
   &__logo {
     width: 48px;
