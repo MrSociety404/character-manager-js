@@ -1,9 +1,11 @@
 <template>
   <main class="home">
     <Titlebar content="CHARACTERS" />
+    <Search />
     <section class="home__grid">
+      <Loading v-if="characters.length === 0" />
       <Card
-        v-for="character in characters"
+        v-for="character in filteredCharacters"
         :key="character.id"
         :character="character"
       />
@@ -12,9 +14,11 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "@vue/runtime-core";
+import { onMounted, ref, computed } from "@vue/runtime-core";
 import Card from "@/components/Card.vue";
 import Titlebar from '@/components/Titlebar.vue'
+import Loading from "@/components/Loading.vue";
+import Search from "../components/Search.vue";
 
 let characters = ref([]);
 const loadCharacter = async () => {
@@ -32,16 +36,29 @@ onMounted(async () => {
     console.error(err);
   }
 });
+
+const filteredCharacters = computed(() => {
+  if(characters.length === 0) return []
+  return characters.value.filter(char => {
+    return (
+      char.name.toLowerCase()
+      .includes("")
+      )
+  })
+})
 </script>
 
 <style lang="scss">
 .home {
+  max-width: $xxl;
+  margin: 0 auto;
+  padding: 1em;
   &__grid {
-    padding: 1em;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
     flex-wrap: wrap;
+    min-height: 80vh ;
   }
 }
 </style>

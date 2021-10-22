@@ -26,14 +26,14 @@ defineProps({
 
 <style lang="scss">
 .card {
-  width: 430px;
+  width: 420px;
   height: 200px;
   display: flex;
   align-items: center;
   background-color: $white;
   box-shadow: $box-shadow;
   border-radius: $border-radius;
-  margin: 1em;
+  margin: 1em 0;
   &__image {
     height: 100%;
     min-width: 150px;
