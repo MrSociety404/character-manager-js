@@ -8,6 +8,7 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "ant-design-vue": "^1.7.8",
     "boxicons": "^2.0.9",
     "core-js": "^3.6.5",
     "dotenv": "^10.0.0",
