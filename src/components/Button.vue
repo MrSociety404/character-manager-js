@@ -34,5 +34,10 @@ defineProps({
     color: $black;
     fill: $black;
   }
+  &.void{
+    border-color:transparent;
+    background-color: transparent;
+    color: $black;
+  }
 }
 </style>
