@@ -25,7 +25,7 @@ import Titlebar from '@/components/Titlebar.vue'
 import Button from '@/components/Button.vue'
 import { ref } from '@vue/reactivity'
 import { onMounted } from '@vue/runtime-core'
-import {useRoute} from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
 const character = ref(null)

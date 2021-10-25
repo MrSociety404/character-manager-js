@@ -41,3 +41,7 @@ html {
 body {
   background-color: $background;
 }
+
+button.swal2-confirm.swal2-styled {
+  background-color: $primary;
+}

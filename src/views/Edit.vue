@@ -11,7 +11,6 @@
         name="image"
         id="image"
         class="edit__input file"
-        
       />
 
       <label class="edit__label" for="name">Name</label>
@@ -59,6 +58,7 @@ import Titlebar from "../components/Titlebar.vue";
 import Button from "../components/Button.vue";
 import { defineProps } from "vue";
 import { useRouter } from "vue-router";
+import Swal from "sweetalert2";
 const router = useRouter();
 defineProps({
   id: String,
@@ -72,13 +72,17 @@ const goToBack = () => {
 
 const sendCharacter = () => {
   try {
-    let input = document.querySelector('.edit__input.file')
-    checkInput(input)
-    translateImage(input.files[0])
+    let input = document.querySelector(".edit__input.file");
+    checkInput(input);
+    translateImage(input.files[0]);
   } catch (err) {
-    console.log(err)
+    Swal.fire({
+      title: err.name,
+      text: err.message,
+      icon: 'error'
+    })
   }
-}
+};
 
 /**
  * Check if the input file is an PNG JPG GIF image
