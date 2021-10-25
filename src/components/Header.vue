@@ -5,17 +5,19 @@
         <img class="header__logo" src="@/assets/logo.svg" alt="logo" />
         <h1 class="header__title">CHARACTER<span>CONTENT MANAGER</span></h1>
       </router-link>
-      <div class="header__nav">
-        <Search />
-        <Button icon="plus" content="ADD NEW" />
-      </div>
+      <Button icon="plus" content="ADD NEW" @click="goToNew()" />
     </div>
   </header>
 </template>
 
 <script setup>
 import Button from "@/components/Button.vue";
-import Search from "@/components/Search.vue";
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const goToNew = () => {
+  router.push("/new")
+}
 </script>
 
 <style lang="scss">
@@ -36,12 +38,6 @@ import Search from "@/components/Search.vue";
       align-items: center;
       cursor: pointer;
     }    
-  }
-  &__nav{
-    width: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
   }
   &__logo {
     width: 48px;
