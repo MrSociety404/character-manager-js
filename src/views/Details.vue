@@ -1,13 +1,13 @@
 <template>
   <main class="details">
     <Titlebar content="CHARACTER DETAILS" />
-    <section class="details__hero">
+    <section class="details__hero" v-if="load">
 
       <section>
           <img src="url" />
       </section>
-      <section v-if="character.value.name">
-        <h2 class="card__title"> {{character.value.name}} </h2>
+      <section>
+        <h2 class="card__title"> {{character.name}} </h2>
         <p class="card__description"></p>
         <p class="card__long__description"></p>
         <section class="details__hero__buttons">
@@ -20,33 +20,26 @@
   </main>
 </template>
 
-<script setup>
-//import Button from "@/components/Button.vue";
-import Titlebar from "@/components/Titlebar.vue";
-import { onMounted, ref } from "@vue/runtime-core";
-import { useRoute } from "vue-router";
-const route = useRoute();
-const character = ref([]);
-
-/**
- * 
- */
-async function getChar(id) 
-{
-   const response = await fetch(`https://character-database.becode.xyz/characters/${id}`);
-  if (!response.ok) throw new Error(response.statusText) 
-  return await response.json();
-}
-
-onMounted(async () => {
-  try {
-    character.value = await getChar(route.params.id);
-    console.log(character.value.name)
-  } catch (err) {
-    console.error(err);
+<script>
+import Titlebar from '@/components/Titlebar.vue'
+import Button from '@/components/Button.vue'
+export default {
+  data() {
+    return {
+      character: {},
+      load: false
+    }
+  },
+  components: {
+    Titlebar,
+    Button
+  },
+  async mounted() {
+    const response = await fetch(`https://character-database.becode.xyz/characters/40631458-60dd-4e8b-99cc-40c5c80fe01b`)
+    this.character = await response.json()
+    this.load = true
   }
-});
-
+}
 </script>
 
 <style lang="scss">
