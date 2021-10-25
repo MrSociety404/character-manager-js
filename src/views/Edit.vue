@@ -22,7 +22,7 @@
       <textarea name="description" id="description" class="edit__input" cols="30" rows="10" />
 
       <div class="edit__buttons">
-        <Button type="reset" content="CANCEL" class="light" />
+        <Button type="reset" content="CANCEL" @click="goToBack()" class="light" />
         <Button type="submit" content="CONFIRM" />
       </div>
     </form>
@@ -33,6 +33,12 @@
 import Titlebar from "../components/Titlebar.vue";
 import Button from "../components/Button.vue";
 import { defineProps } from "vue";
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
+const goToBack = () => {
+  router.go(-1)
+}
 defineProps({
   id: String,
 });
