@@ -14,7 +14,11 @@
     </div>
     <section class="home__grid">
       <Loading v-if="characters.length === 0" />
-      <Error v-if="characters.length !== 0 && filteredCharacters.length === 0" content="NO RESULT FOR YOUR SEARCH" icon="search-alt" />
+      <Error
+        v-if="characters.length !== 0 && filteredCharacters.length === 0"
+        content="NO RESULT FOR YOUR SEARCH"
+        icon="search-alt"
+      />
       <Card
         v-for="character in filteredCharacters"
         :key="character.id"
@@ -36,19 +40,21 @@ const search = ref("");
 
 /**
  * load all the characters
- * @returns {Array} array of object 
+ * @throws {Error} return the error
+ * @returns {Array} array of object
  */
 const loadCharacter = async () => {
   const response = await fetch(
     "https://character-database.becode.xyz/characters"
   );
+  if (!response.ok) throw new Error(response.statusText);
   return await response.json();
 };
 
 onMounted(async () => {
   try {
     characters.value = await loadCharacter();
-    console.log("Character load with success !");
+    console.log("Characters load with success !");
   } catch (err) {
     console.error(err);
   }
