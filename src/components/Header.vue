@@ -16,7 +16,7 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 const goToNew = () => {
-  router.push("/edit")
+  router.push("/new")
 }
 </script>
 
