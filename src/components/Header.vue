@@ -5,13 +5,16 @@
         <img class="header__logo" src="@/assets/logo.svg" alt="logo" />
         <h1 class="header__title">CHARACTER<span>CONTENT MANAGER</span></h1>
       </router-link>
-      <Button icon="plus" content="ADD NEW" />
+      <Button icon="plus" content="ADD NEW" @click="goToNew()" />
     </div>
   </header>
 </template>
 
 <script setup>
 import Button from "@/components/Button.vue";
+const goToNew = () => {
+  console.log("new")
+}
 </script>
 
 <style lang="scss">

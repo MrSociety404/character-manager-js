@@ -34,6 +34,10 @@ import Error from "../components/Error.vue";
 const characters = ref([]);
 const search = ref("");
 
+/**
+ * load all the characters
+ * @returns {Array} array of object 
+ */
 const loadCharacter = async () => {
   const response = await fetch(
     "https://character-database.becode.xyz/characters"
