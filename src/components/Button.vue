@@ -24,6 +24,7 @@ defineProps({
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: transform .2s ease;
   &__icon {
     fill: $white;
     margin-right: .2em;
@@ -38,6 +39,12 @@ defineProps({
     border-color:transparent;
     background-color: transparent;
     color: $black;
+  }
+  &.big {
+    font-size: 1.5em;
+  }
+  &:active {
+    transform: translateY(2px);
   }
 }
 </style>
