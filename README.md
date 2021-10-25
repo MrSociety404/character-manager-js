@@ -10,7 +10,7 @@ A Comics fan client would like to manage his favorites characters on a dashboard
 
 ## Final project
 
-You can checkout the final project [here]()
+You can checkout the final project [here](https://mrsociety404-character.netlify.app/)
 
 ## Dependencies
 - Semantic HTML5 markup
