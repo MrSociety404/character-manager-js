@@ -10,7 +10,7 @@ import { defineProps  } from "vue";
 
 defineProps({
   content: String,
-  icon: Boolean
+  icon: String
 })
 </script>
 

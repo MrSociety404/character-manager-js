@@ -12,8 +12,11 @@
 
 <script setup>
 import Button from "@/components/Button.vue";
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const goToNew = () => {
-  console.log("new")
+  router.push("/edit")
 }
 </script>
 
