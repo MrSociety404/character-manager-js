@@ -39,14 +39,10 @@
       />
 
       <label class="edit__label" for="description">Description</label>
-      <textarea
-        name="description"
-        id="description"
-        class="edit__input"
-        cols="30"
-        rows="10"
-        required
+      <VueSimplemde
+        :configs="configs"
         v-model="formData.description"
+        ref="markdownEditor"
       />
 
       <div class="edit__buttons">
@@ -70,19 +66,24 @@
 <script setup>
 import Titlebar from "../components/Titlebar.vue";
 import Button from "../components/Button.vue";
+import VueSimplemde from "vue-simplemde";
 import { ref } from "@vue/reactivity";
 import Swal from "sweetalert2";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
 const formData = ref({});
+const configs = {
+  spellChecker: false,
+  toolbar: ["bold", "italic", "heading", "|", "quote"],
+};
 
 /**
  * go to the previous page
  */
 const goToBack = () => {
-  router.go(-1)
-}
+  router.go(-1);
+};
 
 /**
  * On the input file check the image
@@ -111,11 +112,7 @@ const sendCharacter = () => {
       !formData.value.shortDescription ||
       !formData.value.description
     ) {
-      return Swal.fire({
-        title: "Oh an error !",
-        text: "All field are required !",
-        icon: "error",
-      });
+      throw new Error("All field are required !");
     }
     formData.value.image = document.querySelector(".preview").src.split(",")[1];
     newCharacter(formData.value);
@@ -178,15 +175,16 @@ const checkInput = (input) => {
 const translateImage = (file) => {
   const reader = new FileReader();
   reader.onload = (e) => {
-    const preview = document.querySelector(".preview")
+    const preview = document.querySelector(".preview");
     preview.src = e.target.result;
-    preview.classList.add('open')
+    preview.classList.add("open");
   };
   reader.readAsDataURL(file);
 };
 </script>
 
 <style lang="scss">
+@import "~simplemde/dist/simplemde.min.css";
 .preview {
   max-height: 200px;
   width: auto;
@@ -198,6 +196,7 @@ const translateImage = (file) => {
 .edit {
   max-width: $xxl;
   margin: 0 auto;
+  padding: 1em;
   &__form {
     display: flex;
     flex-direction: column;
@@ -242,5 +241,8 @@ const translateImage = (file) => {
     width: 100%;
     margin: 2em auto;
   }
+}
+.vue-simplemde {
+  width: 100%;
 }
 </style>

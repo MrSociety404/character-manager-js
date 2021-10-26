@@ -45,3 +45,16 @@ body {
 button.swal2-confirm.swal2-styled {
   background-color: $primary;
 }
+
+strong {
+  font-weight: 600;
+}
+u {
+  text-decoration: underline;
+}
+em {
+  font-style: italic;
+}
+div.CodeMirror.cm-s-paper.CodeMirror-wrap {
+  background-color: $light-grey;
+}
