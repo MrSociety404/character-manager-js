@@ -73,7 +73,28 @@ const confirmDelete = () => {
 }
 
 const deleteCharacter =  async () => {
-   
+   try {
+     const response = await fetch(`https://character-database.becode.xyz/characters/${route.params.id}`, 
+     {
+       method:"DELETE"
+     })
+     if (!response.ok) throw new Error (response.statusText)
+     Swal.fire({
+        title:"Success",
+        text: `Character card "${character.value.name}" was successfully deleted!`,
+        icon:'success',
+        preConfirm:()=>{
+          router.go(-1)
+        }
+
+     })
+   } catch (error) {
+     Swal.fire({
+       title:"Error",
+       text: error.message,
+       icon:'error'
+     })
+   }
 }
 
 onMounted(async () => {
@@ -82,6 +103,7 @@ onMounted(async () => {
     console.log("Character load with success !");
   } catch (err) {
     console.error(err);
+
   }
 });
 </script>
