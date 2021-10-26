@@ -12,8 +12,10 @@
     "boxicons": "^2.0.9",
     "core-js": "^3.6.5",
     "dotenv": "^10.0.0",
+    "marked": "^3.0.8",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
+    "vue-simplemde": "^2.0.0",
     "vue-sweetalert2": "^5.0.2"
   },
   "devDependencies": {

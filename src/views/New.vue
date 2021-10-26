@@ -39,15 +39,10 @@
       />
 
       <label class="edit__label" for="description">Description</label>
-      <textarea
-        name="description"
-        id="description"
-        class="edit__input"
-        cols="30"
-        rows="10"
-        required
+      <VueSimplemde
+        :configs="configs"
         v-model="formData.description"
-        placeholder="write like html"
+        ref="markdownEditor"
       />
 
       <div class="edit__buttons">
@@ -71,12 +66,17 @@
 <script setup>
 import Titlebar from "../components/Titlebar.vue";
 import Button from "../components/Button.vue";
+import VueSimplemde from "vue-simplemde";
 import { ref } from "@vue/reactivity";
 import Swal from "sweetalert2";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
 const formData = ref({});
+const configs = {
+  spellChecker: false,
+  toolbar: ["bold", "italic", "heading", "|", "quote"],
+};
 
 /**
  * go to the previous page
@@ -110,8 +110,7 @@ const sendCharacter = () => {
     if (
       !formData.value.name ||
       !formData.value.shortDescription ||
-      !formData.value.description ||
-      !formData.value.image
+      !formData.value.description
     ) {
       throw new Error("All field are required !");
     }
@@ -185,6 +184,7 @@ const translateImage = (file) => {
 </script>
 
 <style lang="scss">
+@import "~simplemde/dist/simplemde.min.css";
 .preview {
   max-height: 200px;
   width: auto;
@@ -241,5 +241,8 @@ const translateImage = (file) => {
     width: 100%;
     margin: 2em auto;
   }
+}
+.vue-simplemde {
+  width: 100%;
 }
 </style>

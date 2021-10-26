@@ -39,15 +39,10 @@
       />
 
       <label class="edit__label" for="description">Description</label>
-      <textarea
-        name="description"
-        id="description"
-        class="edit__input"
-        cols="30"
-        rows="10"
-        required
+      <VueSimplemde
+        :configs="configs"
         v-model="formData.description"
-        placeholder="write like html"
+        ref="markdownEditor"
       />
 
       <div class="edit__buttons">
@@ -71,12 +66,19 @@
 <script setup>
 import Titlebar from "../components/Titlebar.vue";
 import Button from "../components/Button.vue";
+import VueSimplemde from "vue-simplemde";
 import { ref } from "@vue/reactivity";
 import Swal from "sweetalert2";
 import { useRouter, useRoute } from "vue-router";
 import { onMounted } from "@vue/runtime-core";
+
 const router = useRouter();
 const route = useRoute();
+
+const configs = {
+  spellChecker: false,
+  toolbar: ["bold", "italic", "heading", "|", "quote"],
+};
 
 const formData = ref({});
 
@@ -123,8 +125,7 @@ const editCharacter = () => {
     if (
       !formData.value.name ||
       !formData.value.shortDescription ||
-      !formData.value.description ||
-      !formData.value.image
+      !formData.value.description
     ) {
       throw new Error("All field are required !");
     }
@@ -256,7 +257,7 @@ const translateImage = (file) => {
     @media (max-width: $md) {
       flex-direction: column;
       button {
-        margin: .4em 0;
+        margin: 0.4em 0;
       }
     }
   }
