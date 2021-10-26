@@ -1,5 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+const Details = () => import("../views/Details.vue")
+const Error = () => import("../components/Error.vue")
+const Edit = () => import("../views/Edit.vue")
+const New = () => import("../views/New.vue")
 
 const routes = [
   {
@@ -10,21 +14,21 @@ const routes = [
   {
     path: "/details/:id",
     name: "Details",
-    component: () => {import("../views/Details.vue")},
+    component: Details,
   },
   {
     path: "/:pathMatch(.*)*",
-    component: () => {import("../components/Error.vue")},
+    component: Error,
   },
   {
     path: "/edit/:id",
     name: "Edit",
-    component: () => {import("../views/Edit.vue")},
+    component: Edit,
   },
   {
     path: "/new",
     name: "New",
-    component: () => {import("../views/New.vue")},
+    component: New,
   },
 ];
 
