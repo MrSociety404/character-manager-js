@@ -9,7 +9,7 @@
       <h2 class="card__title"> {{character.name}} </h2>
       <p class="card__description"> {{character.shortDescription}} </p>
       <router-link class="card__link" :to="`/details/${character.id}`">
-        Learn more
+        Show details
         <box-icon class="card__icon" name="chevron-right"></box-icon>
       </router-link>
     </div>
