@@ -10,18 +10,18 @@
             :alt="character.name"
           />
         </picture>
-        <div>
+        <div class="details__hero__info">
           <h2 class="card__title">{{ character.name }}</h2>
           <p class="card__description">{{ character.shortDescription }}</p>
           <p class="card__long__description">{{ character.description }}</p>
           <div class="details__hero__buttons">
-            <Button class="light" content="DELETE" />
-            <Button content="EDIT" />
+            <Button class="light big " content="DELETE" />
+            <Button class="big" content="EDIT" />
           </div>
         </div>
       </div>
       <div class="details__hero__back">
-        <Button class="buttonBack" content="BACK HOME PAGE" />
+        <Button class="buttonBack big" content="BACK HOME PAGE" />
       </div>
     </section>
   </main>
@@ -64,16 +64,23 @@ onMounted(async () => {
 .details {
   max-width: $xl;
   padding: 1em;
-  &__hero {
-    display: flex;
+  margin: 0 auto;
+  &__hero {    
     max-width: $lg;
-    margin: 0 auto;
-    flex-direction: column;
-    flex: 1 1 auto;
-    justify-content: space-between;
+    margin: 0 auto;    
     &__buttons {
       display: flex;
       justify-content: space-evenly;
+      margin: 2em 0;
+      @media (max-width:$md) {
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+      }
+      button{
+        margin: .2em 0;
+        min-width: 190px;
+      }
     }
     &__image {
       height: auto;
@@ -82,12 +89,28 @@ onMounted(async () => {
     }
     &__description {
       display: flex;
+      justify-content: space-around;
+      @media (max-width:$md) {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+    &__info{
+      max-width: 55%;
+      width: 100%;
+      @media (max-width:$md) {
+        max-width: unset;
+        padding: 1em;
+      }
     }
     
     &__picture {
       max-width: 40%;
       width: 100%;
       padding: 0 1em;
+      @media (max-width:$md) {
+        max-width: unset;
+      }
     }
     .buttonBack {
       margin: 1em auto;
