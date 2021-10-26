@@ -1,7 +1,10 @@
 <template>
   <button class="btn">
     <box-icon class="btn__icon" v-if="icon" :name='icon'></box-icon>
+    <p>
     {{ content }}
+
+    </p>
   </button>
 </template>
 
@@ -25,6 +28,10 @@ defineProps({
   align-items: center;
   justify-content: space-between;
   transition: transform .2s ease;
+  p {
+    text-align: center;
+    width: 100%;
+  }
   &__icon {
     fill: $white;
     margin-right: .2em;
