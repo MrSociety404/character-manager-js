@@ -22,11 +22,18 @@ defineProps({
     font-size: 2em;
     font-weight: bold;
     padding: 1em;
+    @media (max-width: $md) {
+      padding: .2em;
+      font-size: 2.5em;
+    }
 }
 &__line{
     height: 2px;
     width: 160px;
     background-color:$black;
+    @media (max-width: $md) {
+      display: none;
+    }
 }
    
 }

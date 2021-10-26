@@ -47,6 +47,7 @@
         rows="10"
         required
         v-model="formData.description"
+        placeholder="write like html"
       />
 
       <div class="edit__buttons">
@@ -81,8 +82,8 @@ const formData = ref({});
  * go to the previous page
  */
 const goToBack = () => {
-  router.go(-1)
-}
+  router.go(-1);
+};
 
 /**
  * On the input file check the image
@@ -109,13 +110,10 @@ const sendCharacter = () => {
     if (
       !formData.value.name ||
       !formData.value.shortDescription ||
-      !formData.value.description
+      !formData.value.description ||
+      !formData.value.image
     ) {
-      return Swal.fire({
-        title: "Oh an error !",
-        text: "All field are required !",
-        icon: "error",
-      });
+      throw new Error("All field are required !");
     }
     formData.value.image = document.querySelector(".preview").src.split(",")[1];
     newCharacter(formData.value);
@@ -178,9 +176,9 @@ const checkInput = (input) => {
 const translateImage = (file) => {
   const reader = new FileReader();
   reader.onload = (e) => {
-    const preview = document.querySelector(".preview")
+    const preview = document.querySelector(".preview");
     preview.src = e.target.result;
-    preview.classList.add('open')
+    preview.classList.add("open");
   };
   reader.readAsDataURL(file);
 };
@@ -198,6 +196,7 @@ const translateImage = (file) => {
 .edit {
   max-width: $xxl;
   margin: 0 auto;
+  padding: 1em;
   &__form {
     display: flex;
     flex-direction: column;

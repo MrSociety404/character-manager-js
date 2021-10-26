@@ -5,7 +5,7 @@
         <img class="header__logo" src="@/assets/logo.svg" alt="logo" />
         <h1 class="header__title">CHARACTER<span>CONTENT MANAGER</span></h1>
       </router-link>
-      <Button icon="plus" content="ADD NEW" @click="goToNew()" />
+      <Button icon="plus" class="header__btn" content="ADD NEW" @click="goToNew()" />
     </div>
   </header>
 </template>
@@ -33,6 +33,9 @@ const goToNew = () => {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    @media (max-width: $md) {
+      justify-content: center;
+    }
     &-title {
       display: flex;
       align-items: center;
@@ -53,6 +56,13 @@ const goToNew = () => {
       font-weight: normal;
       font-size: 1rem;
       letter-spacing: 0.09em;
+    }
+  }
+  &__btn {
+    @media (max-width: $md) {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
     }
   }
 }

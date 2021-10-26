@@ -28,6 +28,7 @@ defineProps({
 .card {
   width: 420px;
   height: 200px;
+  max-width: 100%;
   display: flex;
   align-items: center;
   background-color: $white;
@@ -53,6 +54,7 @@ defineProps({
     font-weight: bold;
     font-size: 1.4em;
     text-transform: uppercase;
+    word-break: break-all;
   }
   &__description {
     margin: 1em 0 3em 0 ;
