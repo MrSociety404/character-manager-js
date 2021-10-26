@@ -78,6 +78,11 @@ const filteredCharacters = computed(() => {
     align-items: center;
     justify-content: space-between;
     margin-right: 2em;
+    @media (max-width:$md) {
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+    }
   }
   &__grid {
     display: flex;
@@ -92,11 +97,13 @@ const filteredCharacters = computed(() => {
   &__box {
     display: flex;
     justify-content: space-between;
-    color: $grey;
     background-color: $light-grey;
     border-radius: $border-radius-big;
     padding: 0.3em 0.5em;
     width: 215px;
+    @media (max-width: $md) {
+      width: 75%;
+    }
     input {
       width: 80%;
     }

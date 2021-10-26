@@ -4,18 +4,24 @@
     <box-icon class="error__icon" :name='icon ? icon : `error`'></box-icon>
     </div>
     <h2 class="error__title"> {{content ? content : `ERROR ! CHECK THE CONSOLE FOR MORE INFORMATION`}} </h2>
-    <Button class="error__btn" content="BACK HOME PAGE" />
+    <Button class="error__btn" content="BACK HOME PAGE" @click="clear()" />
   </div>
 </template>
 
 <script setup>
 import { defineProps } from 'vue';
+import { useRouter } from 'vue-router'
 import Button from './Button.vue';
+const router = useRouter()
 
 defineProps({
   content: String,
   icon: String
 })
+
+const clear = () => {
+  router.go('/')
+}
 </script>
 
 <style lang="scss">
