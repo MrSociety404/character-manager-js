@@ -2,25 +2,27 @@
   <main class="details">
     <Titlebar content="CHARACTER DETAILS" />
     <section class="details__hero" v-if="character">
-      <section>
-        <img
-          class="details__hero__image"
-          :src="`data:image/jpeg;base64,${character.image}`"
-          :alt="character.name"
-        />
-      </section>
-      <section class="details__hero__description">
-        <h2 class="card__title">{{ character.name }}</h2>
-        <p class="card__description">{{ character.shortDescription }}</p>
-        <p class="card__long__description">{{ character.description }}</p>
-        <section class="details__hero__buttons">
-          <Button class="light" content="DELETE" />
-          <Button content="EDIT" />
-        </section>
-      </section>
-      <section class="backHome">
-        <Button content="BACK HOME PAGE" />
-      </section>
+      <div class="details__hero__description">
+        <picture class="details__hero__picture">
+          <img
+            class="details__hero__image"
+            :src="`data:image/jpeg;base64,${character.image}`"
+            :alt="character.name"
+          />
+        </picture>
+        <div>
+          <h2 class="card__title">{{ character.name }}</h2>
+          <p class="card__description">{{ character.shortDescription }}</p>
+          <p class="card__long__description">{{ character.description }}</p>
+          <div class="details__hero__buttons">
+            <Button class="light" content="DELETE" />
+            <Button content="EDIT" />
+          </div>
+        </div>
+      </div>
+      <div class="details__hero__back">
+        <Button class="buttonBack" content="BACK HOME PAGE" />
+      </div>
     </section>
   </main>
 </template>
@@ -60,26 +62,36 @@ onMounted(async () => {
 
 <style lang="scss">
 .details {
-  max-width: $xxl;
-  margin: 0 auto;
-  padding: 1em;  
+  max-width: $xl;
+  padding: 1em;
   &__hero {
     display: flex;
+    max-width: $lg;
+    margin: 0 auto;
+    flex-direction: column;
     flex: 1 1 auto;
     justify-content: space-between;
-    border: purple;
-    border-style: solid;
-    padding: 1em 17em 5em 17em;
     &__buttons {
       display: flex;
       justify-content: space-evenly;
     }
     &__image {
-      width: 349px;
-      height: 349px;
-      border-radius: 1em;
+      height: auto;
+      width: 100%;
+      border-radius: $border-radius;
+    }
+    &__description {
+      display: flex;
     }
     
+    &__picture {
+      max-width: 40%;
+      width: 100%;
+      padding: 0 1em;
+    }
+    .buttonBack {
+      margin: 1em auto;
+    }
   }
 }
 </style>
