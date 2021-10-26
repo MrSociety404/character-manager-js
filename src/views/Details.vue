@@ -13,10 +13,10 @@
         <div class="details__hero__info">
           <h2 class="card__title">{{ character.name }}</h2>
           <p class="card__description">{{ character.shortDescription }}</p>
-          <p class="card__long__description">{{ character.description }}</p>
+          <p class="card__long__description" v-html="character.description" />
           <div class="details__hero__buttons">
-            <Button class="light big " content="DELETE" />
-            <Button class="big" content="EDIT" />
+            <Button class="light big " content="DELETE" @click="confirmDelete()" />
+            <Button class="big" content="EDIT" @click="edit()" />
           </div>
         </div>
       </div>
@@ -32,8 +32,9 @@ import Titlebar from "@/components/Titlebar.vue";
 import Button from "@/components/Button.vue";
 import { ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
-import { useRoute } from "vue-router";
-
+import { useRoute , useRouter } from "vue-router";
+import Swal from "sweetalert2";
+const router = useRouter()
 const route = useRoute();
 const character = ref(null);
 
@@ -49,6 +50,31 @@ const getCharacter = async (id) => {
   if (!response.ok) throw new Error(response.statusText);
   return await response.json();
 };
+
+
+const edit = () => {
+  router.push(`/edit/${route.params.id}`)
+}
+
+const confirmDelete = () => {
+  Swal.fire({
+    title: "Are you sure ?",
+    text: "Do you really want to delete this character ? This process cannot be undonne.",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "red",
+    confirmButtonText: "Delete",
+    focusCancel: true,
+    reverseButtons: true,
+    
+  }).then(res => {
+    if(res.isConfirmed) deleteCharacter()
+  })
+}
+
+const deleteCharacter =  async () => {
+   
+}
 
 onMounted(async () => {
   try {
