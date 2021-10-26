@@ -195,4 +195,52 @@ const translateImage = (file) => {
     display: block;
   }
 }
+.edit {
+  max-width: $xxl;
+  margin: 0 auto;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: $sm;
+    margin: 0 auto;
+  }
+  &__input {
+    border-radius: $border-radius-big;
+    width: 100%;
+    padding: 1em;
+    background-color: $light-grey;
+    margin: 0.2em auto 1em auto;
+    textarea {
+      height: 150px;
+    }
+    &.file {
+      display: none;
+    }
+  }
+  &__label {
+    text-align: left;
+    width: 95%;
+    &.image {
+      background-color: $light-grey;
+      border-radius: $border-radius-big;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4em 0;
+      width: 100%;
+      margin-bottom: 1em;
+      color: $grey;
+      font-weight: bold;
+      cursor: pointer;
+    }
+  }
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 2em auto;
+  }
+}
 </style>
