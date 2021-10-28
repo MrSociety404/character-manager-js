@@ -1,6 +1,6 @@
 <template>
   <main class="edit">
-    <Titlebar content="ADD NEW CHARACTER" />
+    <Titlebar content="EDIT CHARACTER" />
     <div class="edit__form">
       <label class="edit__label image" for="image"
         >Click here to change the image</label
@@ -199,6 +199,7 @@ const translateImage = (file) => {
 </script>
 
 <style lang="scss">
+@import "~simplemde/dist/simplemde.min.css";
 .preview {
   max-height: 200px;
   width: auto;
@@ -261,5 +262,8 @@ const translateImage = (file) => {
       }
     }
   }
+}
+.vue-simplemde {
+  width: 100%;
 }
 </style>
